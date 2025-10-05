@@ -1,15 +1,19 @@
-#include <cmath>
-#include <cstdio>
-#include <vector>
 #include <iostream>
+#include <cmath>
 #include <sstream>
-#include <algorithm>
+
 using namespace std;
 
 int main(){
-    
+
     string s;
     getline(cin, s);   
+    
+    // if empty
+    if (s == "[]") {
+        cout << "[]" << endl;
+        return 0;
+    }
 
     // Remove square brackets and store in an array 
     s = s.substr(1, s.size() - 2);
@@ -22,22 +26,21 @@ int main(){
         arr[N++] = stoi(num);
     }
     
-    
-    int evenCount=0;
-    int oddCount=0;
+    int min=arr[0];
+    int max=arr[0];
     for (int i=0 ; i < N ; i++)
     {   
-        if (abs(arr[i])%2==0)
+        if (arr[i]<min)
         {
-            evenCount++;
+            min=arr[i];
         }
-        if (abs(arr[i])%2==1)
+        if (arr[i]>max)
         {
-            oddCount++;
+            max=arr[i];
         }    
     } 
     
-    cout << "[" << evenCount << "," << oddCount << "]" << endl;
+    cout << "[" << min << "," << max << "]" << endl;
     
     return 0;
 }

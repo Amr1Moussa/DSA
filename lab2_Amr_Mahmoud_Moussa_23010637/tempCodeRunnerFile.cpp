@@ -1,1 +1,0 @@
-    string ispalindrome="YES";
